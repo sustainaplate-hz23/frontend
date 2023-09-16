@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Sustainaplate from "./Sustainaplate";
+import logo from "../assets/Logo-Sustainaplate.png"
+import { Grid, ListItemSecondaryAction } from "@mui/material";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -21,6 +23,7 @@ export default function PermanentDrawerLeft() {
         sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
       >
       </AppBar>
+
       <Drawer
         sx={{
           width: drawerWidth,
@@ -47,7 +50,25 @@ export default function PermanentDrawerLeft() {
         component="main"
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
-        <Toolbar />
+        <h1 
+            style={{"margin-top": 0}}
+        >
+            Sustainaplate
+        </h1>
+
+        <Grid container spacing={2}>
+            <Grid item xs={6} md={4}>
+                    <img
+                    src= {logo}
+                    alt="Sustainaplate Logo"
+                    loading="lazy"
+                />
+            </Grid>
+            <Grid item xs={6} md={8}>
+                    <strong>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
+            </Grid>
+        </Grid>
+
         <Sustainaplate />
       </Box>
     </Box>
