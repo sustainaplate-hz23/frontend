@@ -53,7 +53,7 @@ export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen
                     Sustainaplate
                 </h1>
                 <Grid container spacing={6} pb={4} ml={.5}>
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={2} md={3}>
                         <img
                             className={'main_logo'}
                             src= {logo}
@@ -63,7 +63,7 @@ export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen
                             height="auto"
                         />
                     </Grid>
-                    <Grid item xs={6} md={6} p={2} mt={5}>
+                    <Grid item xs={6} md={6} mt={5}>
                         <strong>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
                     </Grid>
                 </Grid>
