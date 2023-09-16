@@ -40,11 +40,6 @@ export default function PermanentDrawerLeft() {
         <FormGroup>
         <h3>My Shopping List</h3>
           {['Milk', 'Eggs', 'Butter', 'Cinnamon'].map((text, index) => (
-                <FormControlLabel control={<Checkbox key={text} />} label={text} />
-          ))}
-        <Divider />
-        <h3>My Ingredients</h3>
-          {['Banana', 'Avocado', 'Salt'].map((text, index) => (
                 <FormControlLabel control={<Checkbox key={text} defaultChecked/>} label={text} />
           ))}
         <Button variant="contained" sx={{
