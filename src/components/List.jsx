@@ -67,7 +67,7 @@ export default function PermanentDrawerLeft() {
                 />
             </Grid>
             <Grid xs={8}>
-                <strong style={{"color": "#333333", "width": "60%" }}>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
+                <strong style={{"color": "#333333", "width": "60%" }}>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all with the power of AI while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
             </Grid>
         </Grid>
         <Sustainaplate />
