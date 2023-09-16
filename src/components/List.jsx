@@ -43,7 +43,7 @@ export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Sustainaplate />
+          <Sustainaplate setShoppingCart={setShoppingCart} />
         </Grid>
       </Grid>
 
