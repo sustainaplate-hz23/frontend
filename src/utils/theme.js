@@ -15,9 +15,6 @@ export let theme = createTheme({
       main: "#E8F5E5",
     },
   },
-  shape: {
-    borderRadius: 25,
-  },
   typography: {
     fontFamily: "Inter",
   },
@@ -26,10 +23,18 @@ export let theme = createTheme({
 theme = createTheme(theme, {
   typography: {
     h1: { fontSize: "4rem" },
-    h2: {},
-    h3: {},
-    h4: {},
-    h5: {},
+    h2: { fontSize: "1em", fontWeight: 700 },
+    h3: { fontSize: "0.8em" },
+    h4: { fontSize: "0.7em" },
+    h5: {
+      fontSize: 16,
+      fontWeight: "700",
+      color: "black",
+      "&:hover": {
+        cursor: "pointer",
+        color: theme.palette.primary.main,
+      },
+    },
     h6: {},
     button: {
       textTransform: "none",
@@ -51,6 +56,42 @@ theme = createTheme(theme, {
           "&:hover": {
             cursor: "pointer",
           },
+        },
+      },
+    },
+    MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 10,
+
+          "&:before, &:after": {
+            borderBottom: "2px solid var(--TextField-brandBorderColor)",
+          },
+          "&:hover:not(.Mui-disabled, .Mui-error):before": {
+            borderBottom: "2px solid var(--TextField-brandBorderHoverColor)",
+          },
+          "&.Mui-focused:after": {
+            borderBottom: "2px solid var(--TextField-brandBorderFocusedColor)",
+          },
+        },
+        input: {
+          padding: 14,
+        },
+      },
+    },
+    MuiIconButton: {
+      color: theme.palette.common.black,
+      variants: [
+        {
+          props: { variant: "text" },
+          style: {},
+        },
+      ],
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+            
         },
       },
     },
