@@ -9,12 +9,14 @@ import {
   TextField,
   Typography,
   Button,
+  IconButton,
 } from "@mui/material";
 import logo from "../assets/migros_logo.jpg";
 import { useState } from "react";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-const Header = () => {
+const Header = ({toggleCart}) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClickAccount = (event) => {
@@ -71,6 +73,25 @@ const Header = () => {
             />
           </Grid>
         </Grid>
+
+        <IconButton
+            onClick={() => {
+              toggleCart()
+            }}
+            aria-label="delete"
+            sx={{
+              color: "primary.main",
+              backgroundColor: "common.white",
+              border: "2px solid lightgrey",
+              padding: '.65rem',
+
+            }}
+            size="small">
+          <ShoppingCartOutlinedIcon fontSize="inherit"
+
+          />
+        </IconButton>
+
         <Grid item textAlign="end">
           <Avatar
             onClick={handleClickAccount}
@@ -83,6 +104,8 @@ const Header = () => {
             <PermIdentityOutlinedIcon />
           </Avatar>
         </Grid>
+
+
         <Popover
           open={open}
           anchorEl={anchorEl}

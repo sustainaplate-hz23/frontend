@@ -1,8 +1,7 @@
-import * as React from 'react';
+import {useState} from 'react';
 import Sustainaplate from "./Sustainaplate";
 import logo from "../assets/Logo-Sustainaplate.png"
-import { Grid, ListItemSecondaryAction } from "@mui/material";
-import Box from '@mui/material/Box';
+import { Grid, Stack, Box } from "@mui/material";
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
@@ -11,10 +10,28 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
+import './main.scss';
+import Cart from './Cart';
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft() {
+
+export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen}) {
+    const [shoppingCart, setShoppingCard] = useState([
+        {
+            id: 1,
+            name: "Alpenbrot",
+        },
+        {
+            id: 2,
+            name: "Alpenbrot",
+        },
+        {
+            id: 3,
+            name: "Alpenbrot",
+        }
+    ]);
+
   return (
     <Box sx={{ display: 'flex', 'z-index': '0' }}>
       <CssBaseline />
@@ -38,39 +55,52 @@ export default function PermanentDrawerLeft() {
       >
         <Toolbar style={{"height": "7rem"}}/>
         <FormGroup>
-        <h3>My Shopping List</h3>
-          {['Milk', 'Eggs', 'Butter', 'Cinnamon'].map((text, index) => (
-                <FormControlLabel control={<Checkbox key={text} defaultChecked/>} label={text} />
-          ))}
-        <Button variant="contained" sx={{
-          color: 'white' }}>Add Items to Cart</Button>
+            <div className={'ingredients_list'}>
+                <h3>My Shopping List</h3>
+                {['Milk', 'Eggs', 'Butter', 'Cinnamon'].map((text, index) => (
+                    <FormControlLabel control={<Checkbox key={text} defaultChecked/>} label={text} />
+                ))}
+                <Button variant="contained" sx={{
+                    color: 'white' }}>Add Items to Cart</Button>
+            </div>
         </FormGroup>
       </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <h1 
-            style={{"margin-top": 0}}
-        >
-            Sustainaplate
-        </h1>
 
-        <Grid container spacing={2}>
-            <Grid item xs={6} md={4}>
-                    <img
-                    src= {logo}
-                    alt="Sustainaplate Logo"
-                    loading="lazy"
-                />
-            </Grid>
-            <Grid item xs={6} md={8}>
-                    <strong>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
-            </Grid>
+        <Grid xs={isCartAsideOpen ? 9 : 12}>
+            <Stack style={{"padding": "1rem"}}>
+                <h1
+                    style={{"margin-top": 0}}
+                >
+                    Sustainaplate
+                </h1>
+
+                <Grid container spacing={2} pb={3}>
+                    <Grid item xs={6} md={4}>
+                        <img
+                            className={'main_logo'}
+                            src= {logo}
+                            alt="Sustainaplate Logo"
+                            loading="lazy"
+                        />
+                    </Grid>
+                    <Grid item xs={6} md={8}>
+                        <strong>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
+                    </Grid>
+                </Grid>
+
+                <Sustainaplate />
+            </Stack>
         </Grid>
 
-        <Sustainaplate />
-      </Box>
+        {
+            isCartAsideOpen && (
+                <Cart
+                    shoppingCart={shoppingCart}
+                    toggleCheckoutModal={toggleCheckoutModal}
+                />
+            )
+        }
+
     </Box>
   );
 }

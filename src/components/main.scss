@@ -1,0 +1,17 @@
+$bg_gray: #f4f4f4;
+
+.main_logo {
+  width: 256px;
+}
+
+.ingredients_list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.shopping_cart_aside {
+  background-color: $bg_gray;
+  padding: 1rem;
+}
