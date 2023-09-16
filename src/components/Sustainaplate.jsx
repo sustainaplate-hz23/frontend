@@ -3,17 +3,15 @@ import Recipes from "./Recipes";
 
 const Sustainaplate = () => {
   return (
-    <Grid container>
-      <Grid item>
+    <Grid container justifyContent="center" my={2}>
+      <Grid item xs={12} textAlign="center" my={5}>
         <TextField
-          id="outlined-multiline-static"
           label="Give a recipe for..."
-          multiline
-          rows={4}
-          defaultValue=""
+          variant="outlined"
+          sx={{width: "80%"}}
         />
       </Grid>
-      <Grid container item justifyContent="center" p={10}>
+      <Grid container item justifyContent="center" px={16}>
         <Recipes />
       </Grid>
     </Grid>
