@@ -22,7 +22,7 @@ export let theme = createTheme({
 
 theme = createTheme(theme, {
   typography: {
-    h1: { fontSize: "2em" },
+    h1: { fontSize: "2.3em" },
     h2: { fontSize: "1em", fontWeight: 700 },
     h3: { fontSize: "0.95em", color: theme.palette.common.black },
     h4: { fontSize: "0.7em" },
