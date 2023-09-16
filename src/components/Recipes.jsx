@@ -4,7 +4,7 @@ import { theme } from "../utils/theme";
 
 const Recipes = (props) => {
   const mobileBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
-
+console.log(props)
   return (
     <ImageList cols={mobileBreakpoint ? 3 : 1} gap={20}>
       {props?.recipesData?.map((recipe) => (

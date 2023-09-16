@@ -10,19 +10,19 @@ const Sustainaplate = () => {
   const handleClick = (event) => {
     event.preventDefault();
 
-    let apiUrl = `http://34.65.31.171:8080/recipes`;
+    let apiUrl = `http://34.65.31.171:8080/recipes_free_text`;
     axios
       .post(apiUrl, {
-        ingredients: ["apple"],
+        text_input:
+          "I'm looking for a vegetarian dinner with onions, carrots and tomatoes",
       })
       .then((response) => {
-        setRecipesData(response.data);
+        setRecipesData(response?.data);
       })
       .catch((error) => {
         console.log(error); // handle any errors
       });
   };
-
   return (
     <Grid container justifyContent="center">
       <Grid item xs={12} textAlign="center">
@@ -45,7 +45,7 @@ const Sustainaplate = () => {
         </Button>
       </Grid>
       <Grid container item justifyContent="center">
-        <Recipes recipesData={recipesData?.recipes} />
+        <Recipes recipesData={recipesData} />
       </Grid>
     </Grid>
   );
