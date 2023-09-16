@@ -51,7 +51,7 @@ const Sustainaplate = ({setShoppingCart}) => {
                     handleClick(ev)
                 }
             }}
-          label="I am looking for..."
+          label="Give a recipe for..."
           variant="outlined"
           sx={{ width: "80%" }}
         />
