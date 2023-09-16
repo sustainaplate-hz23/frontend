@@ -15,6 +15,28 @@ const style = {
 };
 
 const CheckoutModal = ({isOpen, handleClose}) => {
+
+    const getDeliveryDates = () => {
+        const startDate = new Date('2023-09-14');
+        const endDate = new Date('2023-09-22');
+
+        // Initialize an empty array to store the formatted dates
+        const formattedDates = [];
+
+        // Create a loop to generate formatted dates between the start and end dates
+        let currentDate = startDate;
+        const options = { day: '2-digit', month: 'short' };
+
+        while (currentDate <= endDate) {
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+            formattedDates.push(formattedDate);
+
+            // Increment the current date by one day
+            currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+        }
+        return formattedDates;
+    }
+
     return (
         <Modal
             open={isOpen}
@@ -31,9 +53,30 @@ const CheckoutModal = ({isOpen, handleClose}) => {
                         Delivery times for Halle 550, Zurich
                     </h3>
 
-                    <Grid>
-
+                    <Grid mb={3}>
+                        <div style={{display: 'flex'}}>
+                        {getDeliveryDates().map( (o, i) => {
+                            return (
+                                <div key={i}
+                                     style={{
+                                         border: '1px solid black',
+                                         padding: '1rem',
+                                         borderRadius: '5px',
+                                         marginRight: '3px'
+                                     }}
+                                >
+                                    {o}
+                                </div>
+                            )
+                            }
+                        )}
+                        </div>
                     </Grid>
+
+                    <Stack>
+                        <h2>Sustainable delivery</h2>
+
+                    </Stack>
                 </Stack>
             </Box>
         </Modal>
