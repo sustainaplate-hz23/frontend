@@ -18,12 +18,12 @@ import recipe1 from "../assets/recipe1.jpg";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import StarHalfOutlinedIcon from "@mui/icons-material/StarHalfOutlined";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
+import image_bank from '../utils/images_bank.json';
 
 const Recipe = (props) => {
   const recipe = props.recipe.recipe_info;
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
-  console.log(recipe);
   return (
     <>
       <ImageListItem
@@ -38,12 +38,16 @@ const Recipe = (props) => {
         }}
         onClick={() => setOpen(true)}
       >
-        {/*<img
-        src={`${recipe.image}?w=248&fit=crop&auto=format`}
-        srcSet={`${recipe.ImageList}?w=248&fit=crop&auto=format&dpr=2 2x`}
-        alt={recipe.title}
-        loading="lazy"
-      />*/}
+        {
+          recipe.name in image_bank && (
+                <img
+                    src={image_bank[recipe.name]}
+                    alt={recipe.title}
+                    loading="lazy"
+                />
+            )
+        }
+
 
         <ImageListItemBar
           title={
@@ -66,7 +70,12 @@ const Recipe = (props) => {
           <Grid container>
             <Grid container item>
               <Grid item xs={5.5} ml={2} my={2}>
-                <img src={recipe1} width="90%" />
+                {
+                  recipe.name in image_bank && (
+                        <img src={image_bank[recipe.name]} width="90%" />
+                    )
+                }
+
               </Grid>
               <Grid container item xs={6} flexDirection="column">
                 <Grid item>
