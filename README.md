@@ -1,70 +1,31 @@
-# S
+# Sustainaplate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
 
-## Available Scripts
+*Our team developed this project for the Migros Challenge at **HackZurich 2023**. It is a user-friendly **Recipe Recommender Web Application** that inspires eco-conscious shopping and culinary exploration. Accessible via any web browser, this application empowers users to effortlessly discover recipes tailored to their available ingredients while prioritizing sustainability. By inputting their pantry staples, users can unlock a world of recipe recommendations and receive guidance on making environmentally responsible ingredient choices for their shopping lists. Embrace the future of sustainable shopping and cooking with our application.*
 
-In the project directory, you can run:
+---
 
-### `npm start`
+### 1. Key features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Our web application is a **single-site** solution seamlessly integrated with Migros's existing website.
+- It has been developed using **React**, HTML, and CSS and is powered by a custom API created by our team.
+- The **responsive website** ensures a seamless viewing experience across various devices, from web browsers to mobile devices.
+- The page layout has been designed using MaterialUI, providing an intuitive and visually **appealing user interface**.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Usage
 
-### `npm test`
+- Access the application through any internet-connected browser without the need for installation.
+- Enter any ingredients you have at home, dietary restrictions, meal type or number of portions in English.
+- Press the "See Recipes" button to receive personalized recipe recommendations.
+- Choose a recipe that piques your interest.
+- To create a shopping list of necessary ingredients for your chosen recipe, click the "Add to Shopping List" button.
+- Assess the sustainability score of the items on your shopping list to make environmentally conscious choices.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Links
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Visit the Sustainaplate app [here](https://hackzurich.com/)
+- The used API was created by our team and it can be found [here](https://github.com/orgs/sustainaplate-hz23/repositories)
+- Further info about [HackZurich](https://hackzurich.com/)
+- Further info about [Migros](https://www.migros.ch/en)
+- [MaterialUI](https://mui.com/)

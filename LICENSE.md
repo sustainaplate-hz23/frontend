@@ -1,4 +1,4 @@
-MIT License
+# MIT License
 
 Copyright (c) 2023 Team of Sustainaplate for HackZurich 2023
 
