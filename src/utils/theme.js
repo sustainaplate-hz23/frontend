@@ -31,6 +31,9 @@ theme = createTheme(theme, {
     h4: {},
     h5: {},
     h6: {},
+    button: {
+      textTransform: "none",
+    },
   },
   components: {
     MuiCssBaseline: {
@@ -39,6 +42,15 @@ theme = createTheme(theme, {
         html: {
           display: "flex",
           justifyContent: "center",
+        },
+      },
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            cursor: "pointer",
+          },
         },
       },
     },
