@@ -1,5 +1,7 @@
 import { Grid, TextField } from "@mui/material";
 import Recipes from "./Recipes";
+import Button from '@mui/material/Button';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 
 const Sustainaplate = () => {
   return (
@@ -10,6 +12,8 @@ const Sustainaplate = () => {
           variant="outlined"
           sx={{width: "80%"}}
         />
+        <Button variant="contained" sx={{
+          color: 'white', height: '100%', marginLeft: '1rem', backgroundColor:"secondary.main"}}><AutoFixHighIcon/></Button>
       </Grid>
       <Grid container item justifyContent="center" px={16}>
         <Recipes />

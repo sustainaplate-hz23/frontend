@@ -1,13 +1,10 @@
 import * as React from 'react';
+import Sustainaplate from "./Sustainaplate";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import { Grid, TextField } from "@mui/material";
-import Recipes from "./Recipes";
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -51,9 +48,7 @@ export default function PermanentDrawerLeft() {
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
-            <Grid container item justifyContent="center" p={10}>
-                <Recipes />
-            </Grid>
+        <Sustainaplate />
       </Box>
     </Box>
   );
