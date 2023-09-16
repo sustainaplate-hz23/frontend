@@ -10,6 +10,7 @@ import {
   Typography,
   Button,
   IconButton,
+  Link,
 } from "@mui/material";
 import logo from "../assets/migros_logo.jpg";
 import { useState } from "react";
@@ -60,10 +61,9 @@ const Header = ({toggleCart}) => {
               value="3"
             />
             <Tab
-              label={<Typography variant="h5">My products</Typography>}
-              value="4"
-            />
-            <Tab
+                onClick={() => {
+                  window.location.href = "/";
+                }}
               label={
                 <Typography variant="h5" color="secondary.main">
                   Sustainaplate
@@ -71,6 +71,14 @@ const Header = ({toggleCart}) => {
               }
               value="5"
             />
+            <Tab
+                onClick={() => {
+                  window.location.href = "/lucky";
+                }}
+                label={<Typography variant="h5">Bonus</Typography>}
+                value="4"
+            />
+
           </Grid>
         </Grid>
 
