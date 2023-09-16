@@ -13,7 +13,8 @@ const Cart = ({shoppingCart, toggleCheckoutModal}) => {
                         <a href={"#"}>
                             <Typography
                                 variant="subtitle2"
-                                component="a"onClick={() => {
+                                component="a"
+                                onClick={() => {
                                     toggleCheckoutModal()
                                 }}
                             >

@@ -2,20 +2,12 @@ import {useState} from 'react';
 import Sustainaplate from "./Sustainaplate";
 import logo from "../assets/Logo-Sustainaplate.png"
 import { Grid, Stack, Box } from "@mui/material";
-import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Button from '@mui/material/Button';
 import './main.scss';
 import Cart from './Cart';
-import { CenterFocusStrong } from '@mui/icons-material';
 
 const drawerWidth = 240;
-
 
 export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen}) {
     const [shoppingCart, setShoppingCard] = useState([
@@ -67,7 +59,6 @@ export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen
                         <strong>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
                     </Grid>
                 </Grid>
-
                 <Sustainaplate />
             </Stack>
         </Grid>
