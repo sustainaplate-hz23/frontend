@@ -59,7 +59,6 @@ export default function PermanentDrawerLeft() {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <h1 style={{ "margin-top": 0 }}>Sustainaplate</h1>
-
         <Grid container spacing={2}>
           <Grid item xs={6} md={4}>
             <img src={logo} alt="Sustainaplate Logo" loading="lazy" />
@@ -76,7 +75,6 @@ export default function PermanentDrawerLeft() {
             </strong>
           </Grid>
         </Grid>
-
         <Sustainaplate />
       </Box>
     </Box>
