@@ -7,11 +7,15 @@ const Recipes = ({recipesData}) => {
 
   useEffect(() => {}, [recipesData])
 
+  const maxSustainValue = recipesData?.reduce((acc, current) => {
+    return Math.max(acc, current.sustainability_score);
+  }, 0);
+
   const mobileBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <ImageList cols={mobileBreakpoint ? 3 : 1} gap={20}>
       {recipesData?.map((recipe) => (
-        <Recipe key={recipe.id} recipe={recipe} />
+        <Recipe key={recipe.id} recipe={recipe} maxSustainValue={maxSustainValue} />
       ))}
     </ImageList>
   );

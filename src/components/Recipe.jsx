@@ -12,17 +12,83 @@ import {
   FormGroup,
   Button,
   List,
+  Stack,
 } from "@mui/material";
 import { useState } from "react";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import StarHalfOutlinedIcon from "@mui/icons-material/StarHalfOutlined";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
 import image_bank from '../utils/images_bank.json';
+import './main.scss';
+
+const calcSustainValue = (score, max) => {
+  return ((1 - (score / max)) * 5).toFixed(2);
+}
+
+const getSustainColors = (value) => {
+  if (value < 1) {
+    return {bg: "#da1e28", color: "#fff"}
+  } else if(value < 2.5) {
+    return {bg: "#ff832b", color: "#000"}
+  } else if (value < 3.5) {
+    return {bg: "#f1c21b", color: "#000"}
+  } else {
+    return {bg: "#24a148", color: "#fff"}
+  }
+}
+
+const renderSustainStar = (value) => {
+
+  function roundToHalf(number) {
+    // Multiply the number by 2 to work with halves
+    const multipliedNumber = number * 2;
+
+    // Round to the nearest whole number
+    const roundedNumber = Math.round(multipliedNumber);
+
+    // Divide by 2 to get back to halves
+    return roundedNumber / 2;
+  }
+
+  function renderStarRating(rating) {
+    const fullStars = Math.floor(rating); // Get the number of full stars (3 in this case)
+    const hasHalfStar = rating - fullStars >= 0.5; // Check if there is a half star (true in this case)
+
+    let ratingHTML = [];
+
+    // Render full stars
+    for (let i = 0; i < fullStars; i++) {
+      ratingHTML.push(<StarOutlinedIcon />); // Add a full star character
+    }
+
+    // Render half star if needed
+    if (hasHalfStar) {
+      ratingHTML.push(<StarHalfOutlinedIcon />); // Add a half star character
+    }
+
+    // Render empty stars to reach a total of 5 stars
+    const emptyStars = 5 - Math.ceil(rating);
+    for (let i = 0; i < emptyStars; i++) {
+      ratingHTML.push(<StarBorderIcon />); // Add an empty star character
+    }
+
+    return ratingHTML;
+  }
+
+  const stars = roundToHalf(value);
+  return renderStarRating(stars);
+}
 
 const Recipe = (props) => {
   const recipe = props.recipe.recipe_info;
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
+
+  const sustainValue = calcSustainValue(props?.recipe?.sustainability_score, props.maxSustainValue);
+
+  console.log(recipe);
+
   return (
     <>
       <ImageListItem
@@ -64,6 +130,19 @@ const Recipe = (props) => {
           position="below"
           sx={{ marginTop: 2, textTransform: "capitalize" }}
         />
+
+        <Stack direction={'row'} justifyContent={'space-between'}>
+          <div>
+            Sustainability:
+          </div>
+          <Grid item>
+            {
+              renderSustainStar(sustainValue)
+            }
+          </Grid>
+        </Stack>
+
+
       </ImageListItem>
       <Modal
         open={open}
@@ -88,6 +167,7 @@ const Recipe = (props) => {
               </Grid>
               <Grid container item xs={6} flexDirection="column">
                 <Grid item>
+                  <Stack direction="row" spacing={2} justifyContent={'space-between'}>
                   <Typography
                     variant="h1"
                     sx={{
@@ -98,15 +178,18 @@ const Recipe = (props) => {
                   >
                     {recipe?.name}
                   </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography>
-                    <StarOutlinedIcon />
-                    <StarOutlinedIcon />
-                    <StarOutlinedIcon />
-                    <StarOutlinedIcon />
-                    <StarHalfOutlinedIcon />
-                  </Typography>
+                    <div className={'sustain_box'}
+                         style={{backgroundColor: getSustainColors(sustainValue).bg,
+                           color: getSustainColors(sustainValue).color
+                         }}
+                    >
+                      <div className={'header'}
+                      >Sustainability Rating:</div>
+                      <div className={'content'}>
+                       {sustainValue}
+                      </div>
+                    </div>
+                  </Stack>
                 </Grid>
                 <Grid container item>
                   <Grid item>
@@ -123,6 +206,7 @@ const Recipe = (props) => {
                     <Chip key={tag} label={tag} />
                   ))}
                 </Grid>
+
                 <Grid
                   item
                   p={2}
@@ -131,7 +215,7 @@ const Recipe = (props) => {
                     border: "1px solid lightgrey",
                   }}
                 >
-                  <Typography variant="h3">{recipe?.description.charAt(0).toUpperCase() + recipe?.description.slice(1)}</Typography>
+                    <Typography variant="h3">{recipe?.description.charAt(0).toUpperCase() + recipe?.description.slice(1)}</Typography>
                 </Grid>
               </Grid>
             </Grid>

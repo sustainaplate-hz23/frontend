@@ -29,7 +29,6 @@ const Sustainaplate = () => {
           // "I'm looking for a vegetarian dinner with onions, carrots and tomatoes",
       })
       .then((response) => {
-          console.log(response.data);
         setRecipesData(response.data);
       })
       .catch((error) => {
@@ -47,6 +46,11 @@ const Sustainaplate = () => {
                 setPromptInput(e.target.value);
             }}
             value={promptInput}
+            onKeyPress={(ev) => {
+                if (ev.key === 'Enter' && promptInput !== "") {
+                    handleClick(ev)
+                }
+            }}
           label="Give a recipe for..."
           variant="outlined"
           sx={{ width: "80%" }}
