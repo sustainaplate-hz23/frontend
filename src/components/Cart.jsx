@@ -1,5 +1,5 @@
 import './main.scss';
-import {Grid, Stack, Typography, Card, CardHeader, Button} from "@mui/material";
+import {Grid, Stack, Typography, Card, CardHeader, Button, Checkbox, FormGroup, FormControlLabel} from "@mui/material";
 
 const Cart = ({shoppingCart, toggleCheckoutModal}) => {
     return (
@@ -11,7 +11,12 @@ const Cart = ({shoppingCart, toggleCheckoutModal}) => {
                     </Typography>
 
                         <a href={"#"}>
-                            <Typography variant="subtitle2" component="a">
+                            <Typography
+                                variant="subtitle2"
+                                component="a"onClick={() => {
+                                    toggleCheckoutModal()
+                                }}
+                            >
                             View delivery dates
                             </Typography>
                         </a>
@@ -21,12 +26,11 @@ const Cart = ({shoppingCart, toggleCheckoutModal}) => {
                     {
                         shoppingCart.map(o => {
                             return (
-                                <Card key={o.id} style={{marginBottom: '.5rem'}}>
-                                    <CardHeader
-                                        title={o.name}
-                                        subheader=""
-                                    />
-                                </Card>
+                                
+                                    <FormGroup key={o.id}>
+                                        <FormControlLabel control={<Checkbox key={o.id} defaultChecked/>} label={o.name} />
+                                    </FormGroup>                                        
+                               
                             )
                         })
                     }
@@ -34,10 +38,7 @@ const Cart = ({shoppingCart, toggleCheckoutModal}) => {
             </Stack>
 
             <Button variant="contained"
-                    onClick={() => {
-                        toggleCheckoutModal()
-                    }}
-                    sx={{ width: '100%', color: 'white' }}
+                    sx={{ width: '100%', color: 'white', marginTop: '1rem' }}
             >
                 To checkout
             </Button>

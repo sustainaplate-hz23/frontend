@@ -1,4 +1,4 @@
-import {Modal, Box, Stack, Grid} from "@mui/material";
+import {Modal, Box, Stack, Grid, Button} from "@mui/material";
 
 const style = {
     position: 'absolute',
@@ -75,7 +75,12 @@ const CheckoutModal = ({isOpen, handleClose}) => {
 
                     <Stack>
                         <h2>Sustainable delivery</h2>
-
+                        <Stack direction="row" spacing={2}>
+                            <Button variant="contained" sx={{
+                    color: 'white', bgcolor: 'secondary.main', marginTop: "1rem", width: "50%" }}>Check Sustainable Delivery</Button>
+                        <Button variant="contained" sx={{
+                    color: 'white', bgcolor: 'primary.main', marginTop: "1rem", width: "50%" }}>Check Store Pickup</Button>
+                        </Stack>
                     </Stack>
                 </Stack>
             </Box>
