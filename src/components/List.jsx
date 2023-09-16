@@ -22,24 +22,10 @@ export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen
             id: 1,
             name: "Alpenbrot",
         },
-        {
-            id: 2,
-            name: "Alpenbrot",
-        },
-        {
-            id: 3,
-            name: "Alpenbrot",
-        }
     ]);
 
   return (
     <Box sx={{ display: "flex", "z-index": "0" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      ></AppBar>
-
       <Drawer
         sx={{
           width: drawerWidth,
@@ -57,7 +43,7 @@ export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen
             <div className={'ingredients_list'}>
                 <h3>My Shopping List</h3>
                 {['Milk', 'Eggs', 'Butter', 'Cinnamon'].map((text, index) => (
-                    <FormControlLabel control={<Checkbox key={text} defaultChecked/>} label={text} />
+                    <FormControlLabel key={index} control={<Checkbox key={text} defaultChecked/>} label={text} />
                 ))}
                 <Button variant="contained" sx={{
                     color: 'white' }}>Add Items to Cart</Button>
@@ -68,7 +54,7 @@ export default function PermanentDrawerLeft({toggleCheckoutModal,isCartAsideOpen
         <Grid xs={isCartAsideOpen ? 9 : 12}>
             <Stack style={{"padding": "1rem"}}>
                 <h1
-                    style={{"margin-top": 0}}
+                    style={{"marginTop": 0}}
                 >
                     Sustainaplate
                 </h1>

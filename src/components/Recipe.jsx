@@ -14,7 +14,6 @@ import {
   List,
 } from "@mui/material";
 import { useState } from "react";
-import recipe1 from "../assets/recipe1.jpg";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import StarHalfOutlinedIcon from "@mui/icons-material/StarHalfOutlined";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
@@ -39,13 +38,20 @@ const Recipe = (props) => {
         onClick={() => setOpen(true)}
       >
         {
-          recipe.name in image_bank && (
+          recipe.name in image_bank ? (
                 <img
                     src={image_bank[recipe.name]}
                     alt={recipe.title}
                     loading="lazy"
                 />
-            )
+            ) :
+              (
+                  <img
+                      src={image_bank["generic-food-bg"]}
+                      alt={recipe.title}
+                      loading="lazy"
+                  />
+              )
         }
 
 
@@ -71,9 +77,12 @@ const Recipe = (props) => {
             <Grid container item>
               <Grid item xs={5.5} ml={2} my={2}>
                 {
-                  recipe.name in image_bank && (
+                  recipe.name in image_bank ? (
                         <img src={image_bank[recipe.name]} width="90%" />
-                    )
+                    ) :
+                      (
+                          <img src={image_bank["generic-food-bg"]} width="90%" />
+                      )
                 }
 
               </Grid>
@@ -111,7 +120,7 @@ const Recipe = (props) => {
                 </Grid>
                 <Grid item>
                   {recipe?.tags.slice(0, 5).map((tag) => (
-                    <Chip label={tag} />
+                    <Chip key={tag} label={tag} />
                   ))}
                 </Grid>
                 <Grid

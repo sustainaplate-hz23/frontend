@@ -1,14 +1,17 @@
+import {useEffect} from "react";
 import { ImageList, useMediaQuery } from "@mui/material";
 import Recipe from "./Recipe";
 import { theme } from "../utils/theme";
 
-const Recipes = (props) => {
+const Recipes = ({recipesData}) => {
+
+  useEffect(() => {}, [recipesData])
+
   const mobileBreakpoint = useMediaQuery(theme.breakpoints.up("md"));
-console.log(props)
   return (
     <ImageList cols={mobileBreakpoint ? 3 : 1} gap={20}>
-      {props?.recipesData?.map((recipe) => (
-        <Recipe recipe={recipe} />
+      {recipesData?.map((recipe) => (
+        <Recipe key={recipe.id} recipe={recipe} />
       ))}
     </ImageList>
   );
