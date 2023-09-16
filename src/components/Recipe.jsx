@@ -87,8 +87,6 @@ const Recipe = (props) => {
 
   const sustainValue = calcSustainValue(props?.recipe?.sustainability_score, props.maxSustainValue);
 
-  console.log(recipe);
-
   return (
     <>
       <ImageListItem
