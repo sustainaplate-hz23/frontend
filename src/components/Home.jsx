@@ -6,7 +6,7 @@ import CheckoutModal from "./CheckoutModal";
 
 
 const Home = () => {
-    const [isCartAsideOpen, setIsCartAsideOpen] = useState(false);
+    const [isCartAsideOpen, setIsCartAsideOpen] = useState(true);
     const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
     const toggleCart = () => {
