@@ -56,19 +56,20 @@ export default function PermanentDrawerLeft() {
             Sustainaplate
         </h1>
 
-        <Grid container spacing={2}>
-            <Grid item xs={6} md={4}>
-                    <img
+        <Grid container spacing={8} margin="2rem auto 3rem" width={"80%"} justifyContent="center" alignItems= "center">
+            <Grid xs >
+                <img
                     src= {logo}
                     alt="Sustainaplate Logo"
                     loading="lazy"
+                    width = "80%"
+                    height = "auto"
                 />
             </Grid>
-            <Grid item xs={6} md={8}>
-                    <strong>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
+            <Grid xs={8}>
+                <strong style={{"color": "#333333", "width": "60%" }}>Sustainaplate is your sustainability-minded culinary companion. Discover recipes tailored to your ingredients, dietary preferences, or desired dish. Easily create shopping lists for your next grocery run or order ingredients online—all while keeping sustainability at the forefront, empowering you to make eco-friendly choices. It's your ultimate destination for effortless, environmentally-conscious cooking and shopping.</strong>
             </Grid>
         </Grid>
-
         <Sustainaplate />
       </Box>
     </Box>
