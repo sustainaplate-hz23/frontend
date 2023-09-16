@@ -1,7 +1,17 @@
 import './main.scss';
-import {Grid, Stack, Typography, Card, CardHeader, Button, Checkbox, FormGroup, FormControlLabel} from "@mui/material";
+import {
+    Grid,
+    Stack,
+    Typography,
+    Card,
+    CardHeader,
+    Button,
+    IconButton
+} from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
-const Cart = ({shoppingCart, toggleCheckoutModal}) => {
+const Cart = ({shoppingCart, toggleCheckoutModal, setShoppingCart}) => {
     return (
         <Grid xs={3} className={'shopping_cart_aside'}>
             <Stack>
@@ -24,13 +34,52 @@ const Cart = ({shoppingCart, toggleCheckoutModal}) => {
 
                 <Stack>
                     {
-                        shoppingCart.map(o => {
+                        Object.keys(shoppingCart).map(o => {
                             return (
-                                
-                                    <FormGroup key={o.id}>
-                                        <FormControlLabel control={<Checkbox key={o.id} defaultChecked/>} label={o.name} />
-                                    </FormGroup>                                        
-                               
+                                <Card key={o} style={{marginBottom: '.5rem'}}>
+                                    <Grid>
+                                        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
+                                            <CardHeader title={o} />
+                                            <div>
+                                                <Stack direction={'row'} alignItems={'center'} >
+                                                    <div>
+                                                        <IconButton color="primary" onClick={() => {
+                                                            setShoppingCart((state) => {
+                                                                if (state[o] - 1 === 0) {
+                                                                    const updatedState = { ...state };
+                                                                    delete updatedState[o];
+                                                                    return updatedState;
+                                                                } else {
+                                                                    return Object.assign({}, state, {
+                                                                        [o]: state[o] - 1
+                                                                    });
+                                                                }
+                                                            })
+                                                        }}>
+                                                            <RemoveIcon />
+                                                        </IconButton>
+                                                    </div>
+                                                    <div>
+                                                        {shoppingCart[o]}
+                                                    </div>
+                                                    <div>
+                                                        <IconButton color="primary" onClick={() => {
+                                                            setShoppingCart((state) => {
+                                                                return Object.assign({}, state, {
+                                                                    [o]: state[o] + 1
+                                                                })
+                                                            })
+                                                        }}>
+                                                            <AddIcon />
+                                                        </IconButton>
+                                                    </div>
+                                                </Stack>
+
+                                            </div>
+                                        </Stack>
+
+                                    </Grid>
+                                </Card>
                             )
                         })
                     }

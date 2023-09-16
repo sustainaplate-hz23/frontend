@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import { useState } from "react";
 
-const Sustainaplate = () => {
+const Sustainaplate = ({setShoppingCart}) => {
   const [promptInput, setPromptInput] = useState("");
   const [recipesData, setRecipesData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -70,7 +70,7 @@ const Sustainaplate = () => {
         </Button>
       </Grid>
       <Grid container item justifyContent="center">
-          {isLoading ? (<div style={{marginTop: '2rem'}}><CircularProgress /></div>) : <Recipes recipesData={recipesData} />}
+          {isLoading ? (<div style={{marginTop: '2rem'}}><CircularProgress /></div>) : <Recipes recipesData={recipesData} setShoppingCart={setShoppingCart} />}
       </Grid>
     </Grid>
   );

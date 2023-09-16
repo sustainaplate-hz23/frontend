@@ -226,6 +226,7 @@ const Recipe = (props) => {
                   <FormGroup>
                     {recipe?.ingredients.map((text) => (
                       <FormControlLabel
+                          key={text}
                         control={<Checkbox key={text} defaultChecked />}
                         label={<Typography>{text.charAt(0).toUpperCase() + text.slice(1)}</Typography>}
                       />
@@ -233,6 +234,13 @@ const Recipe = (props) => {
                   </FormGroup>
                   <Button
                     variant="contained"
+                    onClick={() => {
+                      recipe.ingredients.forEach(o => {
+                        props.setShoppingCart((state) => {
+                          return Object.assign({}, state, {[o]: 1})
+                        })
+                      })
+                    }}
                     sx={{
                       color: "white",
                       marginTop: 3,
@@ -248,8 +256,8 @@ const Recipe = (props) => {
                 </Grid>
                 <Grid item>
                   <List>
-                    {recipe?.steps.map((step) => (
-                      <ListItem>
+                    {recipe?.steps.map((step, index) => (
+                      <ListItem key={index}>
                         - {step.charAt(0).toUpperCase() + step.slice(1)}
                       </ListItem>
                     ))}
