@@ -80,11 +80,19 @@ const renderSustainStar = (value) => {
   return renderStarRating(stars);
 }
 
+const arrayToDict = (arr) => {
+  const myDictionary = {};
+  for (const item of arr) {
+    myDictionary[item] = 1;
+  }
+  return myDictionary
+}
+
 const Recipe = (props) => {
   const recipe = props.recipe.recipe_info;
   const [open, setOpen] = useState(false);
+  const [currentIngredients, setCurrentIngredients] = useState(arrayToDict(recipe?.ingredients));
   const handleClose = () => setOpen(false);
-
   const sustainValue = calcSustainValue(props?.recipe?.sustainability_score, props.maxSustainValue);
 
   return (
@@ -224,21 +232,42 @@ const Recipe = (props) => {
                 </Grid>
                 <Grid item mt={3}>
                   <FormGroup>
-                    {recipe?.ingredients.map((text) => (
-                      <FormControlLabel
-                          key={text}
-                        control={<Checkbox key={text} defaultChecked />}
-                        label={<Typography>{text.charAt(0).toUpperCase() + text.slice(1)}</Typography>}
-                      />
+                    {Object.keys(currentIngredients).map((o) => (
+                        <FormControlLabel
+                            control={
+                              <Checkbox
+                                  checked={currentIngredients[o] === 1}
+                                  onChange={(e) => {
+                                    if (e.target.checked) {
+                                      setCurrentIngredients(state => {
+                                        return Object.assign({}, state, {
+                                          [o]: 1
+                                        })
+                                      })
+                                    } else {
+                                      setCurrentIngredients(state => {
+                                        return Object.assign({}, state, {
+                                          [o]: -1
+                                        })
+                                      })
+                                    }
+                                  }}
+                                  color="primary"
+                              />
+                            }
+                            label={o.charAt(0).toUpperCase() + o.slice(1)}
+                        />
                     ))}
                   </FormGroup>
                   <Button
                     variant="contained"
                     onClick={() => {
                       recipe.ingredients.forEach(o => {
-                        props.setShoppingCart((state) => {
-                          return Object.assign({}, state, {[o]: 1})
-                        })
+                        if (currentIngredients[o] === 1) {
+                          props.setShoppingCart((state) => {
+                            return Object.assign({}, state, {[o]: 1})
+                          })
+                        }
                       })
                     }}
                     sx={{
@@ -248,6 +277,7 @@ const Recipe = (props) => {
                   >
                     Add Items to Cart
                   </Button>
+
                 </Grid>
               </Grid>
               <Grid container item xs={5.5} flexDirection="column">
