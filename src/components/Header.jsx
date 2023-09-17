@@ -16,9 +16,11 @@ import logo from "../assets/migros_logo.jpg";
 import { useState } from "react";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import SubscriptionModal from "./SubscriptionModal";
 
 const Header = ({toggleCart}) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openSub, setOpenSub] = useState(false);
 
   const handleClickAccount = (event) => {
     setAnchorEl(event.currentTarget);
@@ -29,6 +31,9 @@ const Header = ({toggleCart}) => {
   };
 
   const open = Boolean(anchorEl);
+
+  const handleCloseSub = () => {
+setOpenSub(false)  };
 
   return (
     <AppBar
@@ -92,12 +97,9 @@ const Header = ({toggleCart}) => {
               backgroundColor: "common.white",
               border: "2px solid lightgrey",
               padding: '.65rem',
-
             }}
             size="small">
-          <ShoppingCartOutlinedIcon fontSize="inherit"
-
-          />
+          <ShoppingCartOutlinedIcon fontSize="inherit"/>
         </IconButton>
 
         <Grid item textAlign="end">
@@ -113,7 +115,6 @@ const Header = ({toggleCart}) => {
           </Avatar>
         </Grid>
 
-
         <Popover
           open={open}
           anchorEl={anchorEl}
@@ -121,7 +122,7 @@ const Header = ({toggleCart}) => {
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "left",
-          }}
+          }}
         >
           <List>
             <ListItem>
@@ -135,13 +136,19 @@ const Header = ({toggleCart}) => {
               </Button>
             </ListItem>
             <ListItem>
-              <Button variant="text" sx={{ color: "black" }}>
-                Orders
+              <Button
+                variant="text"
+                sx={{ color: "black"}}
+                onClick={() => {
+                  setOpenSub(true)
+                }}>
+                Subscription
               </Button>
+              <SubscriptionModal openSub={openSub} handleClose={handleCloseSub} />
             </ListItem>
             <ListItem>
               <Button variant="text" sx={{ color: "black" }}>
-                Shopping List
+                Orders
               </Button>
             </ListItem>
             <ListItem>
